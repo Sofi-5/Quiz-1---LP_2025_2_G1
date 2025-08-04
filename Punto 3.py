@@ -1,3 +1,6 @@
+#n trie (árbol de prefijos) es una excelente opción para implementar una función de autocompletar.
+#Defina los métodos que necesitará, como 'insert(word)' y 'autocomplete (prefix)'.
+
 class TrieNode:
     def __init__(self):
         self.children = {}  # Diccionario: letra -> TrieNode
@@ -19,10 +22,10 @@ class AutocompleteSystem:
         node = self.root
         for char in prefix:
             if char not in node.children:
-                return []  # Prefijo no encontrado
+                return []  # prefijo no encontrado
             node = node.children[char]
         
-        # Realizar DFS desde este nodo
+        # realizar DFS desde este nodo
         results = []
         self._dfs(node, prefix, results)
         return results
@@ -33,11 +36,11 @@ class AutocompleteSystem:
         for char, child in node.children.items():
             self._dfs(child, prefix + char, results)
 
-############################# Prueba del sistema #########################################
-# Crear sistema
+############################# prueba #####################################
+# para crear el sistema
 ac = AutocompleteSystem()
 
-# Insertar palabras
+# se einsertan las palabras
 words = ["carro", "casa", "camino", "camisa", "calle", "perro", "pelo", "pelota"]
 for w in words:
     ac.insert(w)
@@ -46,3 +49,4 @@ for w in words:
 print("Sugerencias para 'ca':", ac.autocomplete("ca"))   # carro, casa, camino, camisa, calle
 print("Sugerencias para 'pe':", ac.autocomplete("pe"))   # perro, pelo, pelota
 print("Sugerencias para 'z':", ac.autocomplete("z"))     # []
+
