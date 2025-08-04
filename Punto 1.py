@@ -1,3 +1,7 @@
+#Identificar las funcionalidades clave: retroceder, avanzar y cargar nuevas páginas.
+#Considere usar una pila para realizar un seguimiento de las páginas visitadas.
+#Defina los métodos que necesitará, como 'goBack()', 'goForward()' y 'loadPage(url)'.
+
 class WebNavigator:
     def __init__(self):
         self.back_stack = []
@@ -31,28 +35,29 @@ class WebNavigator:
         return f"Página actual: {self.current_page}"
 
 
-####################### Utilización de la simulación #########################################
+####################### simulación #########################################
 
-# Crear instancia del navegador
+# instancia del navegador
 nav = WebNavigator()
 
-# Cargar páginas
+# cargar páginas
 nav.load_page("google.com")
 nav.load_page("facebook.com")
 nav.load_page("twitter.com")
 
-# Retroceder en el historial
+# retroceder en el historial
 nav.go_back()      
 nav.go_back()      
 
-# Avanzar en el historial
+# avanzar en el historial
 nav.go_forward()   
 
-# Cargar una nueva página 
+# aargar una nueva página 
 nav.load_page("youtube.com")
 
-# Intentar avanzar 
+# avanzar 
 nav.go_forward()
 
-# Mostrar página actual
+# current
 print(nav.current())  
+
