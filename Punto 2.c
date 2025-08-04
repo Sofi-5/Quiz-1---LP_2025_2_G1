@@ -1,3 +1,6 @@
+#Una cola es ideal para este escenario,
+#Defina los métodos que necesitará, como 'addCustomer(customer)' y 'serveCustomer()'.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -23,27 +26,27 @@ void inicializar(Queue *q) {
 
 void addCustomer(Queue *q, char *nombre) {
     if (q->size == MAX) {
-        printf("⚠️  La cola está llena. No se puede agregar a %s\n", nombre);
+        printf(" La cola está llena. No se puede agregar a %s\n", nombre);
         return;
     }
     strcpy(q->cola[q->rear].nombre, nombre);
     q->rear = (q->rear + 1) % MAX;
     q->size++;
-    printf("✅ Cliente agregado: %s\n", nombre);
+    printf("Cliente agregado: %s\n", nombre);
 }
 
 void serveCustomer(Queue *q) {
     if (q->size == 0) {
-        printf("⚠️  No hay clientes para atender\n");
+        printf(" No hay clientes para atender\n");
         return;
     }
-    printf("🎯 Atendiendo a: %s\n", q->cola[q->front].nombre);
+    printf(" Atendiendo a: %s\n", q->cola[q->front].nombre);
     q->front = (q->front + 1) % MAX;
     q->size--;
 }
 
 void printQueue(Queue *q) {
-    printf("📋 Cola actual:\n");
+    printf("Cola actual:\n");
     if (q->size == 0) {
         printf("   (vacía)\n");
         return;
@@ -69,7 +72,7 @@ int main() {
 
     addCustomer(&q, "Marta");
     addCustomer(&q, "Carlos");
-    addCustomer(&q, "Laura");  // Excede capacidad
+    addCustomer(&q, "Laura");  //  capacidad
 
     serveCustomer(&q);
     serveCustomer(&q);
@@ -78,3 +81,4 @@ int main() {
 
     return 0;
 }
+
