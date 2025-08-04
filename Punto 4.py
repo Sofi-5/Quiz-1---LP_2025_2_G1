@@ -1,3 +1,6 @@
+#Defina los métodos que necesitará, como 'addPurchase(usuario, producto)' y 'getRecommendations(usuario)'.
+#n gráfo o un mapa hash para representar las relaciones entre usuarios y productos.
+
 from collections import defaultdict
 
 class Recommender:
@@ -6,11 +9,11 @@ class Recommender:
         self.product_links = defaultdict(lambda: defaultdict(int))
 
     def add_purchase(self, user, product):
-        # Si el producto ya fue comprado, no lo volvemos a procesar
+        # si el producto ya fue comprado, no se vuelve a procesar
         if product in self.user_purchases[user]:
             return
 
-        # Actualizar relaciones de co-compra
+        # actualizar relaciones de co-compra
         for other in self.user_purchases[user]:
             self.product_links[product][other] += 1
             self.product_links[other][product] += 1
@@ -30,12 +33,12 @@ class Recommender:
         # Ordenar por puntuación de mayor a menor
         return sorted(scores.items(), key=lambda x: -x[1])
 
-####################################### Prueba de la simulación ###############################
+##################################simulación ###############################
 
-# Crear sistema
+# se screa sistema
 rec = Recommender()
 
-# Simular compras
+# "compras"
 rec.add_purchase("Ana", "zapatos")
 rec.add_purchase("Ana", "pantalón")
 rec.add_purchase("Luis", "zapatos")
@@ -45,9 +48,10 @@ rec.add_purchase("Carlos", "pantalón")
 rec.add_purchase("Carlos", "camisa")
 rec.add_purchase("Carlos", "zapatos")
 
-# Recomendaciones para Ana (ya tiene zapatos y pantalón)
+# ""recomendaciwones"
 print("Recomendaciones para Ana:", rec.get_recommendations("Ana"))
 
 # Recomendaciones para Luis (tiene zapatos, camisa, gorra)
 print("Recomendaciones para Luis:", rec.get_recommendations("Luis"))
+
 
